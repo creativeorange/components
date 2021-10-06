@@ -1,6 +1,10 @@
-<div class="bg-white overflow-hidden sm:rounded-lg py-3">
+<div {{ $attributes->merge([
+    'class' => 'bg-white'
+]) }}>
     {{ $intro ?? '' }}
-    <table class="w-full divide-y divide-gray-200">
-        {{ $slot }}
-    </table>
+    <div class="overflow-x-auto w-full">
+        <table class="divide-y divide-gray-200 min-w-full">
+            {{ $slot }}
+        </table>
+    </div>
 </div>

@@ -6,27 +6,36 @@
     'title' => 'Are you sure?',
     'firstButton' => 'OK',
     'secondButton' => 'Cancel',
+    'disabled' => false,
 ])
 
 @if ($download)
     <a {{ $attributes->merge(['class' => 'mx-2 text-indigo-600 hover:text-indigo-900']) }} download>{{ $slot }}</a>
 @elseif($confirm)
     <div x-data="{ {{ $name }}: false }" class="inline-block">
-        <button type="button" class="mx-2 text-indigo-600 hover:text-indigo-900"
+        <button type="button"
+                title="{{ $attributes->get('tooltip') }}"
+                class="mx-2 {{ $disabled ? 'text-gray-400 hover:text-gray-400' : 'text-indigo-600 hover:text-indigo-900' }}"
+                {{ $disabled ? 'disabled' : '' }}
                 @click="{{ $name }} = !{{$name}}">{{ $slot }}</button>
-        <x-modal.confirm :name="$name" :title="$title" :firstButton="$firstButton" :secondButton="$secondButton"
-                         :action="$attributes->get('href')">
+        <x-components::modal.confirm :name="$name" :title="$title" :firstButton="$firstButton"
+                                     :secondButton="$secondButton"
+                                     :action="$attributes->get('href')">
             {{ $modalMessage }}
-        </x-modal.confirm>
+        </x-components::modal.confirm>
     </div>
 @elseif($delete)
     <div x-data="{ {{ $name }}: false }" class="inline-block">
-        <button type="button" class="mx-2 text-indigo-600 hover:text-indigo-900"
+        <button type="button"
+                title="{{ $attributes->get('tooltip') }}"
+                class="mx-2 {{ $disabled ? 'text-gray-400 hover:text-gray-400' : 'text-indigo-600 hover:text-indigo-900' }}"
+                {{ $disabled ? 'disabled' : '' }}
                 @click="{{ $name }} = !{{$name}}">{{ $slot }}</button>
-        <x-modal.delete-confirm :name="$name" :title="$title" :firstButton="$firstButton" :secondButton="$secondButton"
-                                :action="$attributes->get('href')">
+        <x-components::modal.delete-confirm :name="$name" :title="$title" :firstButton="$firstButton"
+                                            :secondButton="$secondButton"
+                                            :action="$attributes->get('href')">
             {{ $modalMessage }}
-        </x-modal.delete-confirm>
+        </x-components::modal.delete-confirm>
     </div>
 @else
     <a {{ $attributes->merge(['class' => 'mx-2 text-indigo-600 hover:text-indigo-900']) }}>{{ $slot }}</a>

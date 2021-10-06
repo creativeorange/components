@@ -1,11 +1,12 @@
 @props([
     'id' => '',
     'name' => '',
+    'disabled' => false
 ])
 
 <x-slot name="input">
-    <select id="{{ $id }}" name="{{ $name }}"
-            class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+    <select id="{{ $id }}" name="{{ $name }}" @if($disabled) disabled @endif
+    class="block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         {{ $slot }}
     </select>
 </x-slot>

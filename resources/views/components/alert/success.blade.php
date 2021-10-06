@@ -1,4 +1,4 @@
-<div class="bg-green-50 border-l-4 border-green-400 p-4">
+<div {{ $attributes->merge(['class' => 'bg-green-50 border-l-4 border-green-400 p-4']) }}>
     <div class="flex">
         <div class="flex-shrink-0">
             <!-- Heroicon name: solid/exclamation -->

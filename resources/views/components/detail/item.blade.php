@@ -8,13 +8,13 @@
             {{ $slot }}
         </span>
     </div>
+    @if(!empty($action))
     <div class="ml-4 flex-shrink-0">
-        @if(!empty($action))
-            <a {{ $attributes->merge([
-                'class' => 'font-medium text-indigo-600 hover:text-indigo-500'
-            ]) }}>
-                {{ $action }}
-            </a>
-        @endif
+        <a {{ $attributes->merge([
+            'class' => 'font-medium text-indigo-600 hover:text-indigo-500'
+        ]) }}>
+            {{ $action }}
+        </a>
     </div>
+    @endif
 </li>

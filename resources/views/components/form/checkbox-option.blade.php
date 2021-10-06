@@ -1,5 +1,5 @@
 @props([
-    'id' => '',
+    'id' => 'form-'.Str::random(),
     'name' => '',
     'value' => '',
     'checked' => false,
